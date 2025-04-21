@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Home Control</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <header class="app-header">
+            <h1 class="app-title">Smart Home Control</h1>
+            <div class="header-controls">
+                <button id="voiceControlBtn" class="btn btn-primary">
+                    <i class="fas fa-microphone"></i>
+                    Voice Command
+                </button>
+                <button id="addRoomBtn" class="btn btn-secondary">
+                    <i class="fas fa-plus"></i>
+                    Add Room
+                </button>
+            </div>
+        </header>
+
+        <div class="room-navigation">
+            <button class="room-nav-btn active" data-room="living-room">Living Room</button>
+            <button class="room-nav-btn" data-room="bedroom">Bedroom</button>
+            <button class="room-nav-btn" data-room="kitchen">Kitchen</button>
+        </div>
+
+        <main class="main-content">
+            <div class="content-grid">
+                <!-- Devices Section -->
+                <section class="devices-section">
+                    <h2>Devices</h2>
+                    
+                    <!-- Living Room Devices -->
+                    <div class="room-devices" data-room="living-room" style="display: grid;">
+                        <div class="device-category">
+                            <h3>Lights</h3>
+                            <div class="device-card" data-room="living-room" data-device-id="main-light">
+                                <div class="device-icon">
+                                    <i class="fas fa-lightbulb"></i>
+                                </div>
+                                <div class="device-info">
+                                    <h4>Main Light</h4>
+                                    <p>Controls the main ceiling light</p>
+                                </div>
+                                <div class="device-controls">
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" class="toggle-input">
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="device-card" data-room="living-room" data-device-id="floor-lamp">
+                                <div class="device-icon">
+                                    <i class="fas fa-lamp"></i>
+                                </div>
+                                <div class="device-info">
+                                    <h4>Floor Lamp</h4>
+                                    <p>Controls the floor lamp</p>
+                                </div>
+                                <div class="device-controls">
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" class="toggle-input">
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="device-category">
+                            <h3>Entertainment</h3>
+                            <div class="device-card" data-room="living-room" data-device-id="tv">
+                                <div class="device-icon">
+                                    <i class="fas fa-tv"></i>
+                                </div>
+                                <div class="device-info">
+                                    <h4>Smart TV</h4>
+                                    <p>Controls the smart TV</p>
+                                </div>
+                                <div class="device-controls">
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" class="toggle-input">
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="device-category">
+                            <h3>Climate</h3>
+                            <div class="device" data-device="ac">
+                                <div class="device-icon">
+                                    <i class="fas fa-snowflake"></i>
+                                </div>
+                                <div class="device-info">
+                                    <h4>Air Conditioner</h4>
+                                    <p>Controls the air conditioner</p>
+                                    <div class="temperature-control">
+                                        <input type="range" class="temperature-slider" min="16" max="30" value="22" step="1">
+                                        <span class="temperature-text">22°C</span>
+                                    </div>
+                                </div>
+                                <div class="device-controls">
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" class="toggle-input">
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Bedroom Devices -->
+                    <div class="room-devices" data-room="bedroom" style="display: none;">
+                        <div class="device-category">
+                            <h3>Lights</h3>
+                            <div class="device-card" data-room="bedroom" data-device-id="main-light">
+                                <div class="device-icon">
+                                    <i class="fas fa-lightbulb"></i>
+                                </div>
+                                <div class="device-info">
+                                    <h4>Main Light</h4>
+                                    <p>Controls the main ceiling light</p>
+                                </div>
+                                <div class="device-controls">
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" class="toggle-input">
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="device-card" data-room="bedroom" data-device-id="bedside-lamp">
+                                <div class="device-icon"><i class="fas fa-lamp"></i></div>
+                                <div class="device-info">
+                                    <h4>Bedside Lamp</h4>
+                                    <p>Controls the bedside lamp</p>
+                                </div>
+                                <div class="device-controls">
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" class="toggle-input">
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="device-category">
+                            <h3>Fans</h3>
+                            <div class="device-card" data-room="bedroom" data-device-id="ceiling-fan">
+                                <div class="device-icon"><i class="fas fa-fan"></i></div>
+                                <div class="device-info">
+                                    <h4>Ceiling Fan</h4>
+                                    <p>Controls the ceiling fan</p>
+                                </div>
+                                <div class="device-controls">
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" class="toggle-input">
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="device-category">
+                            <h3>Climate</h3>
+                            <div class="device" data-device="ac">
+                                <div class="device-icon">
+                                    <i class="fas fa-snowflake"></i>
+                                </div>
+                                <div class="device-info">
+                                    <h4>Air Conditioner</h4>
+                                    <p>Controls the air conditioner</p>
+                                    <div class="temperature-control">
+                                        <input type="range" class="temperature-slider" min="16" max="30" value="22" step="1">
+                                        <span class="temperature-text">22°C</span>
+                                    </div>
+                                </div>
+                                <div class="device-controls">
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" class="toggle-input">
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Kitchen Devices -->
+                    <div class="room-devices" data-room="kitchen" style="display: none;">
+                        <div class="device-category">
+                            <h3>Lights</h3>
+                            <div class="device-card" data-room="kitchen" data-device-id="main-light">
+                                <div class="device-icon">
+                                    <i class="fas fa-lightbulb"></i>
+                                </div>
+                                <div class="device-info">
+                                    <h4>Main Light</h4>
+                                    <p>Controls the main ceiling light</p>
+                                </div>
+                                <div class="device-controls">
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" class="toggle-input">
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="device-card" data-room="kitchen" data-device-id="counter-light">
+                                <div class="device-icon"><i class="fas fa-lightbulb"></i></div>
+                                <div class="device-info">
+                                    <h4>Counter Light</h4>
+                                    <p>Controls the counter light</p>
+                                </div>
+                                <div class="device-controls">
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" class="toggle-input">
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="device-category">
+                            <h3>Fans</h3>
+                            <div class="device-card" data-room="kitchen" data-device-id="exhaust-fan">
+                                <div class="device-icon"><i class="fas fa-fan"></i></div>
+                                <div class="device-info">
+                                    <h4>Exhaust Fan</h4>
+                                    <p>Controls the exhaust fan</p>
+                                </div>
+                                <div class="device-controls">
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" class="toggle-input">
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="device-category">
+                            <h3>Appliances</h3>
+                            <div class="device-card" data-room="kitchen" data-device-id="refrigerator">
+                                <div class="device-icon"><i class="fas fa-refrigerator"></i></div>
+                                <div class="device-info">
+                                    <h4>Refrigerator</h4>
+                                    <p>Controls the smart refrigerator</p>
+                                </div>
+                                <div class="device-controls">
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" class="toggle-input">
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="device-card" data-room="kitchen" data-device-id="microwave">
+                                <div class="device-icon"><i class="fas fa-microwave"></i></div>
+                                <div class="device-info">
+                                    <h4>Microwave</h4>
+                                    <p>Controls the smart microwave</p>
+                                </div>
+                                <div class="device-controls">
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" class="toggle-input">
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Commands Section -->
+                <section class="commands-section">
+                    <h2>Commands</h2>
+                    <div class="voice-commands">
+                        <div class="command-item">
+                            <i class="fas fa-lightbulb"></i>
+                            <span>"Turn on the lights in the living room"</span>
+                        </div>
+                        <div class="command-item">
+                            <i class="fas fa-sliders-h"></i>
+                            <span>"Set brightness to 80%"</span>
+                        </div>
+                        <div class="command-item">
+                            <i class="fas fa-fan"></i>
+                            <span>"Turn off the fan"</span>
+                        </div>
+                        <div class="command-item">
+                            <i class="fas fa-thermometer-half"></i>
+                            <span>"Set temperature to 24 degrees"</span>
+                        </div>
+                        <div class="command-item">
+                            <i class="fas fa-door-open"></i>
+                            <span>"Switch to bedroom"</span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Virtual Room Section -->
+                <section class="virtual-room-section">
+                    <h2>Virtual Room</h2>
+                    <div class="virtual-room" data-current-room="living-room">
+                        <div class="room-visualization">
+                            <div class="room-name">Living Room</div>
+                            <div class="room-icon living-room">
+                                <i class="fas fa-couch"></i>
+                            </div>
+                            <div class="device-icons">
+                                <!-- Living Room Devices -->
+                                <div class="device-icon" data-device="main-light" data-type="light">
+                                    <i class="fas fa-lightbulb"></i>
+                                </div>
+                                <div class="device-icon" data-device="floor-lamp" data-type="light">
+                                    <i class="fas fa-lamp-floor"></i>
+                                </div>
+                                <div class="device-icon" data-device="tv" data-type="tv">
+                                    <i class="fas fa-tv"></i>
+                                </div>
+                                <div class="device-icon" data-device="ac" data-type="ac">
+                                    <i class="fas fa-snowflake"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <!-- Voice Control Panel -->
+    <div class="voice-control-section">
+        <div class="voice-control-header">
+            <h3>Voice Control</h3>
+            <button class="close-voice-control">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="voice-control-content">
+            <div class="voice-controls">
+                <button id="startVoice" class="voice-btn">
+                    <i class="fas fa-microphone"></i>
+                    Start Listening
+                </button>
+                <button id="stopVoice" class="voice-btn" disabled>
+                    <i class="fas fa-microphone-slash"></i>
+                    Stop Listening
+                </button>
+            </div>
+            
+            <div class="voice-status">
+                <p id="voiceStatus">Voice control is inactive</p>
+            </div>
+
+            <div class="voice-messages" id="voiceMessages">
+                <!-- Messages will be added here dynamically -->
+            </div>
+
+            <div class="voice-commands">
+                <h4>Recent Commands</h4>
+                <div id="commandHistory">
+                    <!-- Command history will be added here dynamically -->
+                </div>
+            </div>
+
+            <div class="voice-help">
+                <h4>Available Commands</h4>
+                <ul>
+                    <li>"Turn on/off [device] in [room]"</li>
+                    <li>"Set temperature to [value] in [room]"</li>
+                    <li>"List devices in [room]"</li>
+                    <li>"Show help"</li>
+                    <li>"What can you do?"</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Room Modal -->
+    <div id="addRoomModal" class="modal">
+        <div class="modal-content">
+            <h2>Add New Room</h2>
+            <form id="addRoomForm">
+                <div class="form-group">
+                    <label for="roomName">Room Name</label>
+                    <input type="text" id="roomName" required>
+                </div>
+                <div class="form-group">
+                    <label for="roomIcon">Room Icon</label>
+                    <select id="roomIcon" required>
+                        <option value="fa-couch">Living Room</option>
+                        <option value="fa-bed">Bedroom</option>
+                        <option value="fa-utensils">Kitchen</option>
+                        <option value="fa-bath">Bathroom</option>
+                    </select>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">Add Room</button>
+                    <button type="button" class="btn btn-secondary close-modal">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Room Templates for Virtual Room -->
+    <template id="bedroom-template">
+        <div class="room-name">Bedroom</div>
+        <div class="room-icon bedroom">
+            <i class="fas fa-bed"></i>
+        </div>
+        <div class="device-icons">
+            <div class="device-icon" data-device="ceiling-light" data-type="light">
+                <i class="fas fa-lightbulb"></i>
+            </div>
+            <div class="device-icon" data-device="bedside-lamp" data-type="light">
+                <i class="fas fa-lamp"></i>
+            </div>
+            <div class="device-icon" data-device="ceiling-fan" data-type="fan">
+                <i class="fas fa-fan"></i>
+            </div>
+            <div class="device-icon" data-device="ac" data-type="ac">
+                <i class="fas fa-snowflake"></i>
+            </div>
+        </div>
+    </template>
+
+    <template id="kitchen-template">
+        <div class="room-name">Kitchen</div>
+        <div class="room-icon kitchen">
+            <i class="fas fa-utensils"></i>
+        </div>
+        <div class="device-icons">
+            <div class="device-icon" data-device="main-light" data-type="light">
+                <i class="fas fa-lightbulb"></i>
+            </div>
+            <div class="device-icon" data-device="counter-light" data-type="light">
+                <i class="fas fa-lightbulb"></i>
+            </div>
+            <div class="device-icon" data-device="exhaust-fan" data-type="fan">
+                <i class="fas fa-fan"></i>
+            </div>
+            <div class="device-icon" data-device="microwave" data-type="appliance">
+                <i class="fas fa-microwave"></i>
+            </div>
+        </div>
+    </template>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
+    <script src="{{ url_for('static', filename='js/room-control.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/voice-control.js') }}"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const socket = io();
+            const roomControl = new RoomControl();
+            const voiceControl = new VoiceControl(socket);
+        });
+    </script>
+</body>
+</html>

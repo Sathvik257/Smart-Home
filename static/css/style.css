@@ -1,0 +1,1643 @@
+/* Global Styles */
+:root {
+    --primary-color: #4a90e2;
+    --secondary-color: #6c757d;
+    --success-color: #28a745;
+    --danger-color: #dc3545;
+    --background-color: #f8f9fa;
+    --card-background: #ffffff;
+    --text-color: #212529;
+    --border-radius: 10px;
+    --transition-speed: 0.3s;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+/* App Container */
+.app-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px 20px 20px 360px; /* Added left padding to accommodate virtual room */
+}
+
+/* Header */
+.app-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.app-title {
+    font-size: 24px;
+    color: var(--primary-color);
+}
+
+.header-controls {
+    display: flex;
+    gap: 10px;
+}
+
+/* Buttons */
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    transition: all var(--transition-speed);
+}
+
+.btn i {
+    font-size: 16px;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #357abd;
+}
+
+.btn-secondary {
+    background-color: var(--secondary-color);
+    color: white;
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268;
+}
+
+.btn-success {
+    background-color: var(--success-color);
+    color: white;
+}
+
+.btn-success:hover {
+    background-color: #218838;
+}
+
+.btn-danger {
+    background-color: var(--danger-color);
+    color: white;
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+}
+
+/* Room Navigation */
+.room-navigation {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 30px;
+    padding: 10px;
+}
+
+.room-nav-btn {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    background: #f5f5f5;
+    color: #333;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin: 0 10px;
+}
+
+.room-nav-btn:hover {
+    background: rgba(var(--primary-rgb), 0.1);
+    color: var(--primary-color);
+}
+
+.room-nav-btn.active {
+    background: var(--primary-color);
+    color: white;
+    box-shadow: 0 2px 8px rgba(var(--primary-rgb), 0.3);
+}
+
+.room-devices {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 25px;
+    padding: 20px;
+}
+
+.device-category {
+    background: #fff;
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    margin-bottom: 25px;
+    transition: all 0.3s ease;
+}
+
+.device-category:hover {
+    transform: translateY(-2px);
+}
+
+.device-category h3 {
+    color: #333;
+    font-size: 18px;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #f0f0f0;
+}
+
+.device-card {
+    display: grid;
+    grid-template-columns: 60px 1fr 100px;
+    align-items: center;
+    gap: 20px;
+    background: #fff;
+    border-radius: 12px;
+    padding: 15px;
+    margin-bottom: 15px;
+    border: 1px solid #eee;
+    transition: all 0.3s ease-in-out;
+}
+
+.device-card:last-child {
+    margin-bottom: 0;
+}
+
+.device-card .device-icon {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    color: #666;
+    background: #f8f9fa;
+    border-radius: 12px;
+    transition: all 0.3s ease-in-out;
+}
+
+.device-card .device-info {
+    flex: 1;
+}
+
+.device-card .device-info h4 {
+    margin: 0 0 5px 0;
+    font-size: 16px;
+    color: #333;
+}
+
+.device-card .device-info p {
+    margin: 0;
+    font-size: 14px;
+    color: #666;
+}
+
+.device-card .device-controls {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 10px;
+}
+
+/* Unified Toggle Switch Styles */
+.toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 52px;
+    height: 26px;
+    margin: 0;
+}
+
+.toggle-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+    margin: 0;
+    padding: 0;
+}
+
+.toggle-slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #e0e0e0;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 26px;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.toggle-slider:before {
+    position: absolute;
+    content: "";
+    height: 22px;
+    width: 22px;
+    left: 2px;
+    bottom: 2px;
+    background-color: white;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 50%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Toggle States */
+.toggle-switch input:checked + .toggle-slider {
+    background-color: #4CAF50;
+}
+
+.toggle-switch input:checked + .toggle-slider:before {
+    transform: translateX(26px);
+}
+
+/* Toggle Animations */
+.toggle-switch.updating .toggle-slider {
+    animation: toggleGlow 0.4s ease-in-out;
+}
+
+.toggle-switch.updating .toggle-slider:before {
+    animation: toggleBounce 0.4s ease-in-out;
+}
+
+@keyframes toggleGlow {
+    0% { box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2); }
+    50% { box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2), 0 0 10px rgba(76, 175, 80, 0.5); }
+    100% { box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2); }
+}
+
+@keyframes toggleBounce {
+    0% { transform: scale(1) translateX(var(--translate-x, 0)); }
+    50% { transform: scale(1.1) translateX(var(--translate-x, 0)); }
+    100% { transform: scale(1) translateX(var(--translate-x, 0)); }
+}
+
+/* Active State Effects */
+.toggle-switch input:checked + .toggle-slider {
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2), 0 0 8px rgba(76, 175, 80, 0.3);
+}
+
+/* Hover Effects */
+.toggle-switch:hover .toggle-slider {
+    background-color: #d0d0d0;
+}
+
+.toggle-switch:hover input:checked + .toggle-slider {
+    background-color: #43a047;
+}
+
+/* Remove old toggle styles */
+.device-toggle,
+.switch,
+.slider {
+    display: none !important;
+}
+
+/* Override any existing toggle styles */
+.device-card .toggle-switch,
+.device .toggle-switch {
+    width: 46px;
+    height: 24px;
+}
+
+.device-card .toggle-slider,
+.device .toggle-slider {
+    border-radius: 24px;
+}
+
+.device-card .toggle-slider:before,
+.device .toggle-slider:before {
+    height: 20px;
+    width: 20px;
+}
+
+/* Active Animation */
+.toggle-switch.active .toggle-slider {
+    animation: activeToggleGlow 2s infinite;
+}
+
+@keyframes activeToggleGlow {
+    0%, 100% { box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2), 0 0 6px rgba(76, 175, 80, 0.3); }
+    50% { box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2), 0 0 12px rgba(76, 175, 80, 0.5); }
+}
+
+/* Ensure consistent sizing across all devices */
+.device-controls .toggle-switch,
+.device-card .toggle-switch,
+.device .toggle-switch {
+    min-width: 46px;
+    max-width: 46px;
+    min-height: 24px;
+    max-height: 24px;
+}
+
+/* Focus state for accessibility */
+.toggle-switch input:focus + .toggle-slider {
+    box-shadow: 0 0 1px #4CAF50;
+}
+
+/* Disabled state */
+.toggle-switch.disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.toggle-switch.disabled .toggle-slider {
+    cursor: not-allowed;
+}
+
+/* Temperature Control */
+.temperature-control {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 0.5rem;
+    position: relative;
+}
+
+.temperature-slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 4px;
+    background: #ddd;
+    border-radius: 2px;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.temperature-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 16px;
+    height: 16px;
+    background: #4CAF50;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.temperature-slider.temperature-updated {
+    background: linear-gradient(to right, #4CAF50 0%, #4CAF50 var(--value-percent), #ddd var(--value-percent), #ddd 100%);
+}
+
+.temperature-slider.temperature-updated::-webkit-slider-thumb {
+    transform: scale(1.2);
+    box-shadow: 0 0 10px rgba(76, 175, 80, 0.5);
+}
+
+.temperature-text {
+    min-width: 60px;
+    text-align: right;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.temperature-text.updating {
+    color: #4CAF50;
+    animation: tempUpdate 0.5s ease-in-out;
+}
+
+.device-toggle.active .slider {
+    background-color: #4CAF50;
+}
+
+.device-toggle.active .slider:before {
+    transform: translateX(26px);
+}
+
+.device.updating {
+    transition: all 0.3s ease-in-out;
+}
+
+/* Animation keyframes */
+@keyframes slideValue {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-2px); }
+    100% { transform: translateY(0); }
+}
+
+@keyframes updateGlow {
+    0% { box-shadow: 0 0 0 rgba(76, 175, 80, 0); }
+    50% { box-shadow: 0 0 15px rgba(76, 175, 80, 0.3); }
+    100% { box-shadow: 0 0 0 rgba(76, 175, 80, 0); }
+}
+
+.device[data-device="ac"] {
+    transition: all 0.3s ease-in-out;
+}
+
+.device[data-device="ac"].updating {
+    animation: glow 0.5s ease-in-out;
+}
+
+.device[data-device="ac"].active {
+    background-color: rgba(76, 175, 80, 0.1);
+}
+
+.temperature-control.active .temperature-slider {
+    background: linear-gradient(to right, #4CAF50 0%, #4CAF50 var(--value-percent), #ddd var(--value-percent), #ddd 100%);
+}
+
+/* Device States and Animations */
+.device-card[data-state="on"] {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 15px rgba(var(--primary-rgb), 0.1);
+}
+
+.device-card[data-state="on"] .device-icon {
+    color: var(--primary-color);
+    background: rgba(var(--primary-rgb), 0.1);
+}
+
+.device-card[data-state="on"] .device-toggle {
+    background-color: var(--primary-color);
+}
+
+.device-updated {
+    animation: deviceUpdate 0.5s ease-in-out;
+}
+
+@keyframes deviceUpdate {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+    50% {
+        transform: scale(1.02);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+}
+
+/* Commands Section */
+.commands-section {
+    background-color: var(--card-background);
+    border-radius: var(--border-radius);
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.voice-commands {
+    margin-top: 20px;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.voice-commands h4 {
+    color: #fff;
+    margin-bottom: 15px;
+    font-size: 1rem;
+    opacity: 0.9;
+}
+
+.voice-command-item {
+    padding: 10px;
+    margin-bottom: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    color: #fff;
+    opacity: 0.8;
+}
+
+.voice-command-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+    opacity: 1;
+}
+
+.voice-message {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 10px;
+    animation: fadeIn 0.3s ease;
+}
+
+.voice-message.user {
+    justify-content: flex-end;
+}
+
+.voice-message.system {
+    justify-content: flex-start;
+}
+
+.voice-message-content {
+    padding: 8px 12px;
+    border-radius: 12px;
+    max-width: 80%;
+    word-break: break-word;
+}
+
+.voice-message.user .voice-message-content {
+    background: #007bff;
+    color: white;
+    border-top-right-radius: 4px;
+}
+
+.voice-message.system .voice-message-content {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border-top-left-radius: 4px;
+}
+
+.voice-message.error .voice-message-content {
+    background: rgba(220, 53, 69, 0.2);
+    border: 1px solid rgba(220, 53, 69, 0.3);
+}
+
+.voice-message.success .voice-message-content {
+    background: rgba(40, 167, 69, 0.2);
+    border: 1px solid rgba(40, 167, 69, 0.3);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Virtual Room Section */
+.virtual-room-section {
+    position: fixed;
+    top: 80px;
+    left: 20px;
+    width: 300px;
+    background-color: var(--card-background);
+    border-radius: var(--border-radius);
+    padding: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+    max-height: calc(100vh - 100px);
+    overflow-y: auto;
+}
+
+.virtual-room {
+    margin-top: 10px;
+    transition: all 0.3s ease-in-out;
+}
+
+.room-visualization {
+    background-color: #2c3e50;
+    border-radius: var(--border-radius);
+    padding: 30px;
+    min-height: 250px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    color: white;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.5s ease-in-out;
+}
+
+.room-visualization::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0) 100%);
+    pointer-events: none;
+}
+
+.room-icon {
+    font-size: 48px;
+    margin-bottom: 20px;
+    transition: all 0.5s ease;
+}
+
+.room-icon i {
+    transition: transform 0.5s ease;
+}
+
+.room-icon.living-room i {
+    color: #ffd700;
+}
+
+.room-icon.bedroom i {
+    color: #4a90e2;
+}
+
+.room-icon.kitchen i {
+    color: #ff6b6b;
+}
+
+.device-icons {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding: 20px;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.device-icons .device-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.device-icons .device-icon i {
+    font-size: 24px;
+    color: rgba(255, 255, 255, 0.7);
+    transition: all 0.3s ease;
+}
+
+/* Room-specific styles */
+.virtual-room[data-current-room="living-room"] .room-visualization {
+    background: linear-gradient(135deg, #2c3e50, #3498db);
+}
+
+.virtual-room[data-current-room="bedroom"] .room-visualization {
+    background: linear-gradient(135deg, #2c3e50, #8e44ad);
+}
+
+.virtual-room[data-current-room="kitchen"] .room-visualization {
+    background: linear-gradient(135deg, #2c3e50, #e74c3c);
+}
+
+.room-name {
+    font-size: 18px;
+    font-weight: 500;
+    color: white;
+    text-align: center;
+    margin-bottom: 15px;
+    text-transform: capitalize;
+}
+
+/* Device-specific colors */
+.device-icons .device-icon[data-device="main-light"].active,
+.device-icons .device-icon[data-device="lamp"].active {
+    color: #ffd700;
+    background: rgba(255, 215, 0, 0.2);
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+    animation: lightGlow 2s infinite;
+}
+
+.device-icons .device-icon[data-device="tv"].active {
+    color: #2196f3;
+    background: rgba(33, 150, 243, 0.2);
+    box-shadow: 0 0 20px rgba(33, 150, 243, 0.5);
+    animation: tvGlow 2s infinite;
+}
+
+.device-icons .device-icon[data-device="ac"].active {
+    color: #00bcd4;
+    background: rgba(0, 188, 212, 0.2);
+    box-shadow: 0 0 20px rgba(0, 188, 212, 0.5);
+    animation: acGlow 2s infinite;
+}
+
+@keyframes lightGlow {
+    0%, 100% {
+        box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+        text-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
+    }
+    50% {
+        box-shadow: 0 0 30px rgba(255, 215, 0, 0.8);
+        text-shadow: 0 0 15px rgba(255, 215, 0, 1);
+    }
+}
+
+@keyframes tvGlow {
+    0%, 100% {
+        box-shadow: 0 0 20px rgba(33, 150, 243, 0.5);
+        text-shadow: 0 0 10px rgba(33, 150, 243, 0.8);
+    }
+    50% {
+        box-shadow: 0 0 30px rgba(33, 150, 243, 0.8);
+        text-shadow: 0 0 15px rgba(33, 150, 243, 1);
+    }
+}
+
+@keyframes acGlow {
+    0%, 100% {
+        box-shadow: 0 0 20px rgba(0, 188, 212, 0.5);
+        text-shadow: 0 0 10px rgba(0, 188, 212, 0.8);
+    }
+    50% {
+        box-shadow: 0 0 30px rgba(0, 188, 212, 0.8);
+        text-shadow: 0 0 15px rgba(0, 188, 212, 1);
+    }
+}
+
+.room-description {
+    margin-top: 15px;
+    text-align: center;
+    color: var(--secondary-color);
+    font-size: 14px;
+}
+
+/* Voice Control Panel */
+.voice-control-section {
+    position: fixed;
+    top: 0;
+    right: -400px; /* Start off-screen */
+    width: 380px;
+    height: 100vh;
+    background: #fff;
+    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+    transition: right 0.3s ease;
+    z-index: 1000;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.voice-control-section.show {
+    right: 0;
+}
+
+.voice-control-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.voice-control-header h3 {
+    margin: 0;
+    color: #333;
+}
+
+.close-voice-control {
+    background: none;
+    border: none;
+    font-size: 20px;
+    color: #666;
+    cursor: pointer;
+    padding: 5px;
+    transition: color 0.3s;
+}
+
+.close-voice-control:hover {
+    color: #dc3545;
+}
+
+.voice-controls {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.voice-btn {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    background: #007bff;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.voice-btn:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+}
+
+.voice-btn:not(:disabled):hover {
+    background: #0056b3;
+}
+
+.voice-btn.active {
+    background: #28a745;
+}
+
+.voice-status {
+    text-align: center;
+    margin: 15px 0;
+    padding: 10px;
+    background: #f8f9fa;
+    border-radius: 5px;
+    color: #666;
+}
+
+.voice-messages {
+    margin: 20px 0;
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 5px;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.voice-message {
+    margin-bottom: 10px;
+    padding: 8px;
+    border-radius: 4px;
+    animation: fadeIn 0.3s ease;
+}
+
+.user-message {
+    background: #e3f2fd;
+    color: #0d47a1;
+}
+
+.system-message {
+    background: #f5f5f5;
+    color: #333;
+}
+
+.error-message {
+    background: #ffebee;
+    color: #c62828;
+}
+
+.message-time {
+    font-size: 0.8em;
+    color: #666;
+    margin-right: 8px;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Voice control button animation */
+#voiceControlBtn {
+    position: relative;
+    overflow: hidden;
+}
+
+#voiceControlBtn.active::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 200%;
+    height: 200%;
+    background: rgba(40, 167, 69, 0.1);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    animation: recognitionPulse 2s infinite;
+}
+
+@keyframes recognitionPulse {
+    0%, 100% {
+        transform: translate(-50%, -50%) scale(0.8);
+        opacity: 0.5;
+    }
+    50% {
+        transform: translate(-50%, -50%) scale(1.2);
+        opacity: 0;
+    }
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+.modal.active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn 0.3s ease-out;
+}
+
+.modal-content {
+    background-color: var(--card-background);
+    border-radius: var(--border-radius);
+    padding: 30px;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: var(--border-radius);
+    font-size: 14px;
+}
+
+.form-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+    margin-top: 20px;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 1400px) {
+    .room-devices {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 1024px) {
+    .app-container {
+        padding: 20px 20px 20px 340px;
+    }
+}
+
+@media (max-width: 768px) {
+    .app-container {
+        padding: 20px;
+    }
+    
+    .virtual-room-section {
+        position: relative;
+        top: 0;
+        left: 0;
+        width: 100%;
+        margin-bottom: 20px;
+        max-height: none;
+    }
+    
+    .room-devices {
+        grid-template-columns: 1fr;
+    }
+
+    .app-header {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+
+    .room-navigation {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        padding-bottom: 10px;
+    }
+
+    .voice-control-section {
+        width: 100%;
+        top: auto;
+        bottom: 0;
+        right: 0;
+        border-radius: var(--border-radius) var(--border-radius) 0 0;
+    }
+
+    .device-card {
+        grid-template-columns: 50px 1fr 80px;
+        gap: 15px;
+        padding: 12px;
+    }
+    
+    .device-card .device-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 20px;
+    }
+}
+
+/* Device State Indicators */
+.device-card[data-state="on"] {
+    background: linear-gradient(145deg, #ffffff, #f0f7ff);
+    border-left: 4px solid var(--success-color);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(40, 167, 69, 0.15);
+}
+
+.device-card[data-state="on"] .device-icon {
+    color: var(--success-color);
+    text-shadow: 0 0 10px rgba(40, 167, 69, 0.3);
+    transform: scale(1.1);
+}
+
+.device-card[data-state="off"] {
+    background: linear-gradient(145deg, #ffffff, #f8f9fa);
+    border-left: 4px solid var(--secondary-color);
+}
+
+.device-card .device-icon {
+    transition: all 0.3s ease-in-out;
+}
+
+.device-card[data-state="on"] .device-icon {
+    color: var(--success-color);
+    text-shadow: 0 0 10px rgba(40, 167, 69, 0.3);
+    transform: scale(1.1);
+}
+
+.device-card[data-state="off"] .device-icon {
+    color: var(--secondary-color);
+}
+
+/* Virtual Room Device States */
+.device-icons .device-icon.active {
+    color: var(--primary-color);
+    text-shadow: 0 0 10px var(--primary-color);
+    transform: scale(1.1);
+}
+
+/* Enhanced Animations */
+@keyframes glow {
+    0%, 100% {
+        text-shadow: 0 0 15px rgba(40, 167, 69, 0.5);
+    }
+    50% {
+        text-shadow: 0 0 25px rgba(40, 167, 69, 0.8);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.02);
+        opacity: 0.8;
+    }
+}
+
+/* Voice Command Recognition Animation */
+.voice-recognition-active {
+    animation: recognitionPulse 2s infinite;
+}
+
+@keyframes recognitionPulse {
+    0%, 100% {
+        transform: translate(-50%, -50%) scale(0.8);
+        opacity: 0.5;
+    }
+    50% {
+        transform: translate(-50%, -50%) scale(1.2);
+        opacity: 0;
+    }
+}
+
+/* Message Fade Animation */
+.message-fade-in {
+    animation: messageFadeIn 0.3s ease-out forwards;
+}
+
+@keyframes messageFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Temperature Control Animations */
+.temperature-updated {
+    animation: temperatureUpdate 0.5s ease-in-out;
+}
+
+.temperature-slider::-webkit-slider-thumb:active {
+    transform: scale(1.2);
+}
+
+.temperature-display.updating {
+    animation: temperatureDisplayUpdate 0.5s ease-in-out;
+    color: var(--primary-color);
+}
+
+@keyframes temperatureUpdate {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+        box-shadow: 0 0 20px rgba(0, 188, 212, 0.3);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes temperatureDisplayUpdate {
+    0% {
+        transform: scale(1);
+        opacity: 0.7;
+    }
+    50% {
+        transform: scale(1.2);
+        opacity: 1;
+        color: #00bcd4;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Update AC icon animation */
+.device-icon[data-device="ac"].updating {
+    animation: acUpdate 0.5s ease-in-out;
+}
+
+@keyframes acUpdate {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+        color: #00bcd4;
+        text-shadow: 0 0 15px rgba(0, 188, 212, 0.8);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Room-specific styles */
+.room-devices[data-room="bedroom"] .device[data-device="ac"].updating,
+.room-devices[data-room="living-room"] .device[data-device="ac"].updating,
+.room-devices[data-room="kitchen"] .device[data-device="ac"].updating {
+    animation: glow 0.5s ease-in-out;
+}
+
+.room-devices[data-room="bedroom"] .temperature-text.updating,
+.room-devices[data-room="living-room"] .temperature-text.updating,
+.room-devices[data-room="kitchen"] .temperature-text.updating {
+    animation: pulse 0.5s ease-in-out;
+}
+
+/* Virtual Room Styles */
+.virtual-room {
+    transition: all 0.3s ease-in-out;
+}
+
+.room-visualization {
+    background-color: #2c3e50;
+    border-radius: var(--border-radius);
+    padding: 30px;
+    min-height: 250px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    color: white;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.5s ease-in-out;
+}
+
+/* Room-specific backgrounds */
+.virtual-room[data-current-room="living-room"] .room-visualization {
+    background: linear-gradient(135deg, #2c3e50, #3498db);
+}
+
+.virtual-room[data-current-room="bedroom"] .room-visualization {
+    background: linear-gradient(135deg, #2c3e50, #8e44ad);
+}
+
+.virtual-room[data-current-room="kitchen"] .room-visualization {
+    background: linear-gradient(135deg, #2c3e50, #e74c3c);
+}
+
+.room-icon {
+    font-size: 48px;
+    margin-bottom: 20px;
+    transition: all 0.5s ease;
+}
+
+.room-icon i {
+    transition: transform 0.5s ease;
+}
+
+/* Room-specific icons */
+.room-icon.living-room i {
+    color: #ffd700;
+}
+
+.room-icon.bedroom i {
+    color: #4a90e2;
+}
+
+.room-icon.kitchen i {
+    color: #ff6b6b;
+}
+
+.device-icons {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding: 20px;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.device-icons .device-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.device-icons .device-icon i {
+    font-size: 24px;
+    color: rgba(255, 255, 255, 0.7);
+    transition: all 0.3s ease;
+}
+
+/* Device-specific active states */
+.device-icons .device-icon[data-type="light"].active {
+    background: rgba(255, 215, 0, 0.2);
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
+}
+
+.device-icons .device-icon[data-type="light"].active i {
+    color: #ffd700;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
+}
+
+.device-icons .device-icon[data-type="tv"].active {
+    background: rgba(33, 150, 243, 0.2);
+    box-shadow: 0 0 20px rgba(33, 150, 243, 0.4);
+}
+
+.device-icons .device-icon[data-type="tv"].active i {
+    color: #2196f3;
+    text-shadow: 0 0 10px rgba(33, 150, 243, 0.8);
+}
+
+.device-icons .device-icon[data-type="ac"].active {
+    background: rgba(0, 188, 212, 0.2);
+    box-shadow: 0 0 20px rgba(0, 188, 212, 0.4);
+}
+
+.device-icons .device-icon[data-type="ac"].active i {
+    color: #00bcd4;
+    text-shadow: 0 0 10px rgba(0, 188, 212, 0.8);
+}
+
+.device-icons .device-icon[data-type="fan"].active {
+    background: rgba(156, 39, 176, 0.2);
+    box-shadow: 0 0 20px rgba(156, 39, 176, 0.4);
+}
+
+.device-icons .device-icon[data-type="fan"].active i {
+    color: #9c27b0;
+    text-shadow: 0 0 10px rgba(156, 39, 176, 0.8);
+    animation: spin 4s linear infinite;
+}
+
+/* Device animations */
+@keyframes lightGlow {
+    0%, 100% {
+        box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+        text-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
+    }
+    50% {
+        box-shadow: 0 0 30px rgba(255, 215, 0, 0.8);
+        text-shadow: 0 0 15px rgba(255, 215, 0, 1);
+    }
+}
+
+@keyframes tvGlow {
+    0%, 100% {
+        box-shadow: 0 0 20px rgba(33, 150, 243, 0.5);
+        text-shadow: 0 0 10px rgba(33, 150, 243, 0.8);
+    }
+    50% {
+        box-shadow: 0 0 30px rgba(33, 150, 243, 0.8);
+        text-shadow: 0 0 15px rgba(33, 150, 243, 1);
+    }
+}
+
+@keyframes acGlow {
+    0%, 100% {
+        box-shadow: 0 0 20px rgba(0, 188, 212, 0.5);
+        text-shadow: 0 0 10px rgba(0, 188, 212, 0.8);
+    }
+    50% {
+        box-shadow: 0 0 30px rgba(0, 188, 212, 0.8);
+        text-shadow: 0 0 15px rgba(0, 188, 212, 1);
+    }
+}
+
+@keyframes fanSpin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Room transition animation */
+.room-visualization {
+    animation: roomTransition 0.5s ease-in-out;
+}
+
+@keyframes roomTransition {
+    0% {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Animation for fan spinning */
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Animation for device state change */
+.device-icon.state-changed {
+    animation: pulseScale 0.3s ease;
+}
+
+@keyframes pulseScale {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Device Toggle Animations */
+.device-card {
+    transition: all 0.3s ease-in-out;
+}
+
+.device-card.device-updated {
+    animation: deviceUpdate 0.5s ease-in-out;
+}
+
+.device-icon {
+    transition: all 0.3s ease-in-out;
+}
+
+.device-icon.device-updated {
+    animation: iconPulse 0.5s ease-in-out;
+}
+
+.device-toggle {
+    transition: all 0.3s ease;
+}
+
+/* Animation for device updates */
+@keyframes deviceUpdate {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+    50% {
+        transform: scale(1.02);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+}
+
+@keyframes iconPulse {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.2);
+        opacity: 0.8;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Device State Indicators */
+.device-card[data-state="on"] .device-icon {
+    color: var(--primary-color);
+    background: rgba(74, 144, 226, 0.1);
+}
+
+.device-card[data-state="on"] .device-icon i {
+    animation: glowEffect 2s infinite;
+}
+
+@keyframes glowEffect {
+    0%, 100% {
+        text-shadow: 0 0 5px rgba(74, 144, 226, 0.5);
+    }
+    50% {
+        text-shadow: 0 0 15px rgba(74, 144, 226, 0.8);
+    }
+}
+
+/* Toggle Switch Animations */
+.toggle-input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.toggle-input:checked + .toggle-slider {
+    background-color: var(--primary-color);
+}
+
+.toggle-input:checked + .toggle-slider:before {
+    transform: translateX(20px);
+}
+
+.toggle-slider {
+    position: relative;
+    display: block;
+    width: 40px;
+    height: 20px;
+    background-color: #ccc;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.toggle-slider:before {
+    content: "";
+    position: absolute;
+    height: 16px;
+    width: 16px;
+    left: 2px;
+    bottom: 2px;
+    background-color: white;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+/* Device Category Animation */
+.device-category {
+    transition: all 0.3s ease;
+}
+
+.device-category:hover {
+    transform: translateY(-2px);
+}
+
+/* Temperature Control Animations */
+.temperature-slider {
+    transition: all 0.3s ease;
+}
+
+.temperature-slider::-webkit-slider-thumb {
+    transition: all 0.3s ease;
+}
+
+.temperature-text {
+    transition: all 0.3s ease;
+}
+
+.temperature-text.updating {
+    animation: tempUpdate 0.5s ease-in-out;
+}
+
+@keyframes tempUpdate {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.2);
+        opacity: 0.8;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Entertainment Device Animations */
+.entertainment-device[data-state="on"] {
+    background: linear-gradient(145deg, #ffffff, #f0f7ff);
+    border-left: 4px solid #2196F3;
+    box-shadow: 0 4px 12px rgba(33, 150, 243, 0.15);
+}
+
+.entertainment-device[data-state="on"] .device-icon {
+    animation: devicePulse 2s infinite;
+}
+
+.entertainment-device[data-device-id="tv"][data-state="on"] .device-icon {
+    color: #2196F3;
+    text-shadow: 0 0 10px rgba(33, 150, 243, 0.5);
+    animation: tvOn 2s infinite;
+}
+
+@keyframes tvOn {
+    0%, 100% {
+        transform: scale(1);
+        text-shadow: 0 0 10px rgba(33, 150, 243, 0.5);
+    }
+    50% {
+        transform: scale(1.05);
+        text-shadow: 0 0 20px rgba(33, 150, 243, 0.8);
+    }
+}
+
+/* Entertainment Device Icons */
+.entertainment-device .device-icon {
+    background: rgba(33, 150, 243, 0.1);
+}
+
+.entertainment-device[data-device-id="tv"] .device-icon {
+    background: linear-gradient(145deg, rgba(33, 150, 243, 0.1), rgba(33, 150, 243, 0.05));
+}
