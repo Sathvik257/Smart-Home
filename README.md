@@ -81,8 +81,7 @@ Now open your browser and visit:
 🧠 Usage Guide
 Click the microphone icon in the bottom-right corner.
 
-Speak a command like:
-🗣️ "Turn off the fan"
+Speak a command like: 🗣️ "Turn off the fan"
 
 The system will:
 
@@ -106,7 +105,7 @@ Add command patterns in process_command()
 
 Add a new card in index.html
 
-Update the JS logic for state changes
+Update the JavaScript logic to handle state changes
 
 🎭 Adding New Scenes
 Add scene keywords in process_command()
@@ -114,3 +113,23 @@ Add scene keywords in process_command()
 Define actions in handle_scene()
 
 Add a new button under Quick Actions in index.html
+
+🧩 Troubleshooting
+Issue	Solution
+🎤 Microphone not working	Check hardware connection and browser permissions
+🛑 Voice not recognized	Ensure internet is stable (uses Google Speech API)
+🔌 WebSocket issues	Confirm Flask server is running at http://localhost:5000
+
+📄 License
+This project is licensed under the MIT License.
+See the LICENSE file for more information.
+
+🙏 Acknowledgments
+🎤 Speech recognition powered by Google Speech Recognition API
+
+🎨 Icons provided by Font Awesome
+
+💡 UI inspired by modern smart home dashboard designs
+
+
+
