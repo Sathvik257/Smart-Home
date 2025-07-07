@@ -114,16 +114,3 @@ Add scene keywords in process_command()
 Define actions in handle_scene()
 
 Add a new button under Quick Actions in index.html
-
-🧩 Troubleshooting
-Issue	Solution
-🎤 Microphone not working	Check hardware connection and browser permissions
-🛑 Voice not recognized	Ensure internet is stable (uses Google Speech API)
-🔌 WebSocket issues	Confirm Flask server is running at localhost:5000
-
-📄 License
-This project is licensed under the MIT License.
-See the LICENSE file for more information.
-
-🙏 Acknowledgments
-Speech recognition powered by Google Speech Recognition API
