@@ -52,8 +52,9 @@ Ensure you have the following installed:
 - `SpeechRecognition`
 - `pyttsx3`
 - `simple-websocket`
-
-  🧩 Troubleshooting
+  
+---
+###🧩 Troubleshooting
 Issue	Solution
 🎤 Microphone not working	Check hardware connection and browser permissions
 🛑 Voice not recognized	Ensure internet is stable (uses Google Speech API)
