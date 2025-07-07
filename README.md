@@ -53,6 +53,23 @@ Ensure you have the following installed:
 - `pyttsx3`
 - `simple-websocket`
 
+  🧩 Troubleshooting
+Issue	Solution
+🎤 Microphone not working	Check hardware connection and browser permissions
+🛑 Voice not recognized	Ensure internet is stable (uses Google Speech API)
+🔌 WebSocket issues	Confirm Flask server is running at http://localhost:5000
+
+📄 License
+This project is licensed under the MIT License.
+See the LICENSE file for more information.
+
+🙏 Acknowledgments
+🎤 Speech recognition powered by Google Speech Recognition API
+
+🎨 Icons provided by Font Awesome
+
+💡 UI inspired by modern smart home dashboard designs
+
 ### 🧪 Installation Steps
 
 ```bash
@@ -114,22 +131,6 @@ Define actions in handle_scene()
 
 Add a new button under Quick Actions in index.html
 
-🧩 Troubleshooting
-Issue	Solution
-🎤 Microphone not working	Check hardware connection and browser permissions
-🛑 Voice not recognized	Ensure internet is stable (uses Google Speech API)
-🔌 WebSocket issues	Confirm Flask server is running at http://localhost:5000
-
-📄 License
-This project is licensed under the MIT License.
-See the LICENSE file for more information.
-
-🙏 Acknowledgments
-🎤 Speech recognition powered by Google Speech Recognition API
-
-🎨 Icons provided by Font Awesome
-
-💡 UI inspired by modern smart home dashboard designs
 
 
 
